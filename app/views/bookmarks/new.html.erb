@@ -1,0 +1,8 @@
+<h1>Add a bookmark to add a movie to the list <%= @list.name %></h1>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie, collection: Movie.order(:title), prompt: "Choose a movie" %>
+  <%= f.submit %>
+<% end %>
+

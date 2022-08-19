@@ -3,7 +3,6 @@ class ListsController < ApplicationController
     @lists = List.all
   end
 
-
   def new
     @list = List.new
   end
@@ -17,12 +16,6 @@ class ListsController < ApplicationController
 
     redirect_to list_path(@list) if @list.save
   end
-
-  def bookmarks
-    @list = List.find(params[:id])
-    @bookmark = @list.bookmarks
-  end
-
 
   private
 
