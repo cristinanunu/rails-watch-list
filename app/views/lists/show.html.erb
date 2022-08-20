@@ -4,13 +4,16 @@
 <ul>
   <% @list.movies.each do |movie| %>
     <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-    <li><%= movie.title %></li>
-    <%= link_to "Delete movie", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <li><%= movie.title %> <%= link_to image_tag("trash-can-solid.svg", alt: "Rails logo", width: "15px"), bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></li>
   <% end %>
 </ul>
 
 
-<%= link_to "Back to collection of list", root_path %>
+<%= link_to root_path do %>
+<%= image_tag("circle-chevron-left-solid.svg", alt: "Rails logo", width: "15px")%> Back to collection of list
+<% end %>
 <br>
-<%= link_to "Add movie to list", new_list_bookmark_path(@list) %>
+<%= link_to new_list_bookmark_path(@list) do %>
+  <%= image_tag("plus-solid.svg", alt: "Rails logo", width: "12px")%>  Add movie to list
+  <% end %>
 <br>
